@@ -90,3 +90,30 @@ AWS Global Accelerator
   - Supports TCP, UDP (non-HTTPS traffic)
   
 
+Site 2 Site VPN
+=
+
+ - Connects AWS VPC with On-prem network
+ - Uses IPSec to encrypt the traffic traversing over public internet
+ - Takes 1 hour to setup
+ - 1 VGW Virtual Private Gateway + 1 CGW Customer Gateway
+ - VGW is highly available by default, it has two interfaces in two separate AZs
+ - CGW is a single device on-prem, **NOT** highly available
+ - To make CGW HA, another CGW can be created on-prem and linked as another VPN connection on the same VGW
+   - 1 VGW (4 interfaces) + 2 CGW = HA VPN
+ - CGW requires public IP Address
+ - Route table must be modified with CIDR range of the networks to route traffic correctly
+ - VGW is in the AWS public zone ✅ (not in VPC)
+ - Up to 1.25 Gbps (limit of AWS) ⚠️
+ - Travel over public internet is inconsistent and high latency ⚠️⚠️
+ - AWS Cost - Per GB, per hour 💲💲
+ - Can be laid over direct connect for encryption
+
+Static VPN = networks are statically configured
+ - No load balancing
+ - No failover
+
+Dynamic VPN = Uses BGP
+  - Network info exchanged
+  - Multiple VPN provide HA
+  - Route propagation allows dynamically updating the route tables

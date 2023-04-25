@@ -85,7 +85,7 @@ AWS Global Accelerator
  - Traffic is routed to the nearest location of AWS infrastructure of the application 
  - Example: User is in london and infrastructure is in Ireland and US East - then user's traffic enters the AWS private netwrok in London and it is routed to Ireland via AWS private network.
  
- Different from Cloudfront:
+ Different from Cloudfront ⚠️:
   - No caching
   - Supports TCP, UDP (non-HTTPS traffic)
   

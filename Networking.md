@@ -68,11 +68,25 @@ Stateful:
 -   New instances launched in the ASG inherit the security groups, thus they inherit the permission to interact with other SGs that allow traffic from the source SG
 
 AWS Local Zones
--
+=
 
 - A zone near your on-prem data center
 - Better performance, less latency 🕐
 - Supports Direct Connect
 - Supports limited services
 - Uses the nearest region for some services such as S3, EBS snapshots
+
+AWS Global Accelerator
+=
+
+ - Brings AWS network closer to the customer
+ - Creates two anycast IP addresses
+ - When customer hits these IP, they enter AWS backbone network via the nearest Global Accelerator location
+ - Traffic is routed to the nearest location of AWS infrastructure of the application 
+ - Example: User is in london and infrastructure is in Ireland and US East - then user's traffic enters the AWS private netwrok in London and it is routed to Ireland via AWS private network.
+ 
+ Different from Cloudfront:
+  - No caching
+  - Supports TCP, UDP (non-HTTPS traffic)
+  
 

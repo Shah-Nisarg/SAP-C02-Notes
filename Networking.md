@@ -117,3 +117,18 @@ Dynamic VPN = Uses BGP
   - Network info exchanged
   - Multiple VPN provide HA
   - Route propagation allows dynamically updating the route tables
+  
+⭐ Transit Gateway
+=
+
+Without transit gateway
+ - VPC must be connected in mesh topology
+ - Each VPC must have VGW to connect using S2S VPN with on-prem
+ 
+ With transit gateway
+  - VPC, S2S VPN and Direct connect can connect with 1 Transit gateway
+  - Single region device, but it can **peer** with other accounts in same or other regions
+  - Can be shared using AWS RAM (Resource Access Manager)
+  - Route tables need to configured
+  - Reduces network complexity
+  - Highly available and scalable ✅

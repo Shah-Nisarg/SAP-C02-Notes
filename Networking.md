@@ -22,8 +22,8 @@ DNS Names:
  - If it has private IP, it gets a private DNS name
  - Custom DNS name can be assigned using custom Route 53 domain
 
-Subnet IP + 1 = VPC Router
-VPC + 2 = Route 53 resolver
+➡️Subnet IP + 1 = VPC Router
+➡️VPC + 2 = Route 53 resolver
 
 VPC Router
 -
@@ -34,7 +34,7 @@ VPC Router
 
 Route table:
 - The most specific route wins
-- If a custom route table is disassociated from a subnet, default route table is associated with it
+- If a custom route table is disassociated from a subnet, default route table is associated with it‼️
 
 Stateful vs Stateless Firewalls
 =
@@ -43,7 +43,7 @@ Stateless:
 - Operates at layer 3, doesn't understand TCP
 - Require rules to permit both outbound and inbound traffic for a request
 - Outbound: www.google.com:443
-- Inbound: 1.2.3.4:12345 (Ephemeral port)
+- Inbound: 1.2.3.4:12345 (Ephemeral port)⚠️
 - High admin overhead due to both sides of rules
 
 Stateful:
@@ -61,11 +61,18 @@ Stateful:
 - Can deny a specific IP address
 
 **Security Groups**:
-- Controls traffic entering or exiting an **ENI**, not EC2
+- Controls traffic entering or exiting an **ENI**‼️, not EC2
 - Cannot deny traffic
 - Cannot deny a specific IP address
 - Can reference other security groups or logical resources
 -   New instances launched in the ASG inherit the security groups, thus they inherit the permission to interact with other SGs that allow traffic from the source SG
 
+AWS Local Zones
+-
 
+- A zone near your on-prem data center
+- Better performance, less latency 🕐
+- Supports Direct Connect
+- Supports limited services
+- Uses the nearest region for some services such as S3, EBS snapshots
 

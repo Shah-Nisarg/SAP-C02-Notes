@@ -1,0 +1,71 @@
+Public vs Private Services
+=
+
+Public Internet - e.g. Gmail
+Private Internet - AWS
+  - Public Services - e.g. S3
+  - Private Services - e.g. EC2 (inside VPC)
+
+DHCP
+-
+Dynamic Host Configuration Protocol - it is how EC2 instances get IP address and DNS names.
+
+Properties 
+ - Immutable
+ - Creates new versions if it is modified
+ - Max 1 per VPC
+ - It gets linked to a VPC immediately, but changes take effect when it renews
+
+DNS Names:
+ - AWS Provides the default DNS names if _EnableDNSHostNames_ is true for VPC
+ - If the EC2 has public IP, it gets a public DNS name
+ - If it has private IP, it gets a private DNS name
+ - Custom DNS name can be assigned using custom Route 53 domain
+
+Subnet IP + 1 = VPC Router
+VPC + 2 = Route 53 resolver
+
+VPC Router
+-
+
+- Present in each subnet at Subnet IP + 1 (192.168.0.1)
+- Routes all traffic that is leaving the subnet, e.g. to other subnets, in other AZ, to internet, to on-prem networks
+- Uses 1 route table to decide routing
+
+Route table:
+- The most specific route wins
+- If a custom route table is disassociated from a subnet, default route table is associated with it
+
+Stateful vs Stateless Firewalls
+=
+Stateless:
+- e.g. NACL
+- Operates at layer 3, doesn't understand TCP
+- Require rules to permit both outbound and inbound traffic for a request
+- Outbound: www.google.com:443
+- Inbound: 1.2.3.4:12345 (Ephemeral port)
+- High admin overhead due to both sides of rules
+
+Stateful:
+- e.g. security groups
+- Operates at layer 4-5, understands TCP
+- If request is allowed, response is also allowed
+- Less admin overhead
+- No need to enable ephemeral ports as they are only required for response
+
+**NACL**:
+- Controls traffic entering or exiting **subnets**
+- Default NACL in a VPC allows all traffic
+- Custom NACL blocks all traffic
+- Lowest rule (1) has highest weight
+- Can deny a specific IP address
+
+**Security Groups**:
+- Controls traffic entering or exiting an **ENI**, not EC2
+- Cannot deny traffic
+- Cannot deny a specific IP address
+- Can reference other security groups or logical resources
+-   New instances launched in the ASG inherit the security groups, thus they inherit the permission to interact with other SGs that allow traffic from the source SG
+
+
+

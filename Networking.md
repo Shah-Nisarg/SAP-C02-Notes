@@ -126,9 +126,35 @@ Without transit gateway
  - Each VPC must have VGW to connect using S2S VPN with on-prem
  
  With transit gateway
+  - Can intelligently route traffic between multiple VPCs
+    - (It is a router)
   - VPC, S2S VPN and Direct connect can connect with 1 Transit gateway
   - Single region device, but it can **peer** with other accounts in same or other regions
+    - 1 TGW can peer with up to 50 TGW
+    - Each of the peered TGW can peer with up to 50 other TGW 🤯
+    - BGP and route propagation **doesn't** work with peering
   - Can be shared using AWS RAM (Resource Access Manager)
   - Route tables need to configured
+    - Can be populated using BGP (Border Gateway Protocol) or static
   - Reduces network complexity
   - Highly available and scalable ✅
+  - ⭐ It can also have VGW to terminate VPN traffic
+    - So the VPCs do not have to have separate VGW
+
+Note ✅:
+  - Public DNS name to private IP address is not supported by transit gateway
+    - because the traffic may be cross region
+    - But VPC does support it
+  - Cross region data is encrypted
+
+Routing ⭐:
+  - Association
+    - A route table associated with a TGW **attachment** (i.e. a link with either a VPC, VPN VGW or Direct Connect VIF Gateway)
+    - Route table is used to determine where the traffic exiting from an **attachment** should go
+      - that is reviewed from the route table associated with the **attachment**
+  - Propagation
+    - Through BGP route table is updated if an attachment is permitted to propagate its route to that route table
+    - So if a DX's or VPN's IP changes, the route table is automatically updated
+  - Allows creating isolated networks, e.g. 2 VPC with 1 VPN and 1 DX
+    - VPCs cannot interact with each other, but they can interact with the DX and VPN
+    - DX and VPN can interact with either of the two VPC

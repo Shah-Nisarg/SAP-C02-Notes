@@ -23,6 +23,7 @@ DNS Names:
  - Custom DNS name can be assigned using custom Route 53 domain
 
 ➡️Subnet IP + 1 = VPC Router
+
 ➡️VPC + 2 = Route 53 resolver
 
 VPC Router
@@ -117,8 +118,20 @@ Dynamic VPN = Uses BGP
   - Network info exchanged
   - Multiple VPN provide HA
   - Route propagation allows dynamically updating the route tables
-  
-⭐ Transit Gateway
+
+Accelerated S2S VPN
+-
+
+**S2S VPN + AWS Global Accelerator**
+- Only works with transit gateway attachment
+- Does not work with VGW 🚫🚫
+- TGW VPN attachment gets 2 anycast IP addresses which route the traffic to global AWS extended network
+- The traffic enters the AWS network through the nearest global location
+- Reduces latency and jitter, provides high performance and stable connection to TGW
+- Cost = Fixed cost for accelerator + Data transfer fee 💲💲
+- ✅ Transit gateway is usually preferred over VGW because of the ability to link multiple VPC and integration with AWS Global accelerator
+
+🤯 Transit Gateway
 =
 
 Without transit gateway
@@ -158,3 +171,29 @@ Routing ⭐:
   - Allows creating isolated networks, e.g. 2 VPC with 1 VPN and 1 DX
     - VPCs cannot interact with each other, but they can interact with the DX and VPN
     - DX and VPN can interact with either of the two VPC
+
+
+Route table
+=
+
+- Up to 50 static routes, 100 dynamic routes
+- 1 subnet, max 1 RT
+
+Rules Priority Order
+-
+1. Most specific aka. Longest prefix (/32, /24, /16, /0)
+2. Static routes
+3. Dynamic routes (i.e. routes learned by VGW)
+4. Dynamic routes from DX
+5. Dynamic routes from VGW - static configuration
+6. Dynamic routes from VGW - BGP
+7. Dynamic routes learned with AS_PATH - shortest hop length
+
+
+Gateway Route table
+- 
+Allows routing traffic to a security appliance as it enters the VPC.
+
+Links to gateways such as,
+1. VGW
+2. IGW Internet Gateway

@@ -131,6 +131,24 @@ Accelerated S2S VPN
 - Cost = Fixed cost for accelerator + Data transfer fee 💲💲
 - ✅ Transit gateway is usually preferred over VGW because of the ability to link multiple VPC and integration with AWS Global accelerator
 
+**Client VPN**
+
+- S2S VPN = On-prem to AWS VPC
+- Client VPN = Client Desktops to AWS VPC
+- Implementation of open VPN
+- Creates an interface in the target subnet for VPN connection
+  - Use multiple subnets for high availability
+- Replaces the entire route table on the client machine 
+  - Any connections to internet go through the client VPN through NAT gateway or internet gateway
+  - Connections to other VPC can go through VPC Peering connection
+  - Clients connect with each other through the VPN connection
+
+**Client VPN - Split tunnel**
+
+- Instead of replacing the client route table, adds routes
+  - Internet traffic flows directly out to internet
+  - Clients can communicate on local network
+
 🤯 Transit Gateway
 =
 
@@ -197,3 +215,4 @@ Allows routing traffic to a security appliance as it enters the VPC.
 Links to gateways such as,
 1. VGW
 2. IGW Internet Gateway
+

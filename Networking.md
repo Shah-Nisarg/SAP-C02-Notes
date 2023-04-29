@@ -142,12 +142,14 @@ Accelerated S2S VPN
   - Any connections to internet go through the client VPN through NAT gateway or internet gateway
   - Connections to other VPC can go through VPC Peering connection
   - Clients connect with each other through the VPN connection
+- Cost - fixed cost + cost per subnet + cost per hour per connection
 
 **Client VPN - Split tunnel**
 
 - Instead of replacing the client route table, adds routes
   - Internet traffic flows directly out to internet
   - Clients can communicate on local network
+- Not enabled by default
 
 🤯 Transit Gateway
 =

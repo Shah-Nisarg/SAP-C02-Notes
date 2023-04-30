@@ -316,6 +316,15 @@ HA and Resiliency
 - Multiple AWS routers (physical ports)
 - Multiple customer routers
 - Multiple on-prem sites to which DX connects (i.e. multiple physical connections)
-- Multiple DX connection datacenters (so that the connection is resilient even if one data center fails)
+- Multiple DX locations (so that the connection is resilient even if one data center fails)
 - ... + a separate S2S VPN
 
+LAG (Link Aggregation Groups)
+-
+
+- Combine multiple DX links for higher **speed** 🚀
+- Allows minimum link spec to continue to operate if one of the links fails
+- Up to 4 links (but only 2 if they are 100 Gbps)
+- All links must have the same speed
+- All connections must go to the same DX location and the same AWS DX router ‼️
+- Has several single point of failure ⚠️

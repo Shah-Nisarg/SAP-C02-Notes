@@ -22,9 +22,11 @@ DNS Names:
  - If it has private IP, it gets a private DNS name
  - Custom DNS name can be assigned using custom Route 53 domain
 
-➡️Subnet IP + 1 = VPC Router
+➡️ Subnet IP + 1 = VPC Router
 
-➡️VPC + 2 = Route 53 resolver
+➡️ VPC + 2 = Route 53 resolver
+
+➡️ Subnet + 2 = Route 53 resolver
 
 VPC Router
 -
@@ -478,3 +480,24 @@ Endpoint policy - controls the access to resources
  - It can deny access to the resource
  - For allow, the resource must also allow access, e.g. through S3 bucket policy
  - `aws:sourceVpce` - to match by specific gateway endpoint in S3 bucket policy
+
+VPC DNS
+=
+
+Problems:
+- On-prem resources cannot discover VPC based DNS resources
+- VPC resources cannot discover on-prem DNS resources
+
+(Previous) Solution:
+- VPC based DNS forwarder in EC2
+  - Runs using DHCP
+  - All DNS queries in VPC go to the DNS forwarder and then either go to on-prem DNS resolver or R53 resolver within VPC @ subnet + 2 IP
+  - On-prem resolver can route VPC related or private hosted zone queries to VPC DNS forwarder
+  
+(Better) Solution = Route 53 Endpoints (.2)
+ - VPC interfaces (ENI) accessible over VPN or DX
+ - Outbound and Inbound
+ - Outbound - Conditional forwarders, R53 to on-prem
+ - Inbound - On-prem to R53 resolver
+ - Rules to control what is forwarded
+ - Can scale automatically based on load

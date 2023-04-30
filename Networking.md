@@ -309,3 +309,13 @@ Encryption options
 - Physical connection is requried between the two devices
 - High performance
 - Difficult to find network devices supporting MacSec
+
+HA and Resiliency
+-
+
+- Multiple AWS routers (physical ports)
+- Multiple customer routers
+- Multiple on-prem sites to which DX connects (i.e. multiple physical connections)
+- Multiple DX connection datacenters (so that the connection is resilient even if one data center fails)
+- ... + a separate S2S VPN
+

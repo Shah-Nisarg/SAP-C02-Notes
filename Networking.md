@@ -218,3 +218,12 @@ Links to gateways such as,
 1. VGW
 2. IGW Internet Gateway
 
+
+Direct Connect
+=
+
+- Physical connection from on-prem to AWS
+- 1, 10, 100 Gbps
+- Allocation may take up to a month
+- Unencrypted connection
+- May connect to VPC or AWS public zone using private or public VIF

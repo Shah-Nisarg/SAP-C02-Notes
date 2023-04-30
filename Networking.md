@@ -472,3 +472,9 @@ Interface endpoints
   - ✅ **Private DNS** can override the default DNS of the service
   - 🤯 No code changes required with PrivateDNS (route 53)
   
+Endpoint policy - controls the access to resources
+-
+
+ - It can deny access to the resource
+ - For allow, the resource must also allow access, e.g. through S3 bucket policy
+ - `aws:sourceVpce` - to match by specific gateway endpoint in S3 bucket policy

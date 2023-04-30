@@ -407,4 +407,7 @@ Routing policies
   - Closest to the customer based on distance
   - Provide AWS resource ID, or latitude-longitude of the resource
   - Configure **Bias** for each location to expand or shrink the range
-  - 
+  
+  
+Route 53 = Domain registration (Buying domain @ 12 $) + Domain hosting (4 NS records)
+

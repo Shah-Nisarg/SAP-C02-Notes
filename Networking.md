@@ -422,3 +422,53 @@ DNS Sec
 - CW Alarm for DNSSec failure
 - DNS Sec validation can be enabled in VPC
   - Records failing DNS Sec will not be returned
+
+AWS Private Link
+=
+
+- Provide a service to other AWS accounts using private IP address.
+- Must use Availability zone ID (use1-az1) in order to keep consistency between accounts.
+- Network load balancer provides cross-zone load balancing
+- ENI in consumer account connects to the NLB
+- Security groups and NACLs apply to ENI
+- Data remains on AWS infrastructure
+- HA - multiple endpoints
+- IPv4 and TCP support (no IPv6)
+- 🔐 Private DNS is supported
+  - Service provider may have public and private endpoints
+  - Using private DNS combined with the Private Link endpoints, the traffic can be kept on the AWS private network
+- DX, S2S VPN and VPC peering supported
+
+VPC Endpoints
+=
+
+Gateway endpoints (S3 & DynamoDB)
+-
+
+- Private access to S3 and DynamoDB
+- Per service, per region
+- Associate to subnets
+- Prefix list added to route table
+  - Route table is kept updated by AWS
+  - Must request quota increase in order to add more than 50 entries in the route table
+- HA by default 💪
+- Endpoint policy - to control access
+- No cost 💲
+- Examples
+  - Private only S3 bucket by modifying access policy
+
+Interface endpoints
+-
+
+- All services except DynamoDB
+- Not HA ⚠️💪
+- For HA - needs one ENI per subnet per AZ
+- Security groups
+- Endpoint policy
+- TCP and IPv4 only ⚠️
+- Uses Private Link
+- ‼️ Interface endpoints create a new DNS name for the service
+  - Regional or Zonal DNS - _blabla.sns.us-east-1.vpce.amazonaws.com_
+  - ✅ **Private DNS** can override the default DNS of the service
+  - 🤯 No code changes required with PrivateDNS (route 53)
+  

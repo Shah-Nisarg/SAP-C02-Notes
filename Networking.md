@@ -242,15 +242,41 @@ VIF
 - 1 VIF on hosted DX
 - BGP happens between customer DX router and AWS DX router
 
+Private VIF
+-
+
+- 1 VIF = 1 VGW = 1 VPC in the _**same region**_
+- No encryption
+- Can use 1500 bytes or 9000 bytes frame (Jumbo frames)
+- VIF can terminate either on VGW or DGW Direct connect gateway
+- AWS advertizes VPC CIDRs and BGP peer IPs
+- You can advertize corp specific prefixes up to 100
+  - If more than 100 prefixes are advertized, it breaks 😱😱😱
+- Only allows connecting to private IPs of your EC2
+
+Public VIF
+-
+
+- For connecting to AWS public zone services
+- AWS advertizes AWS Public IP ranges over BGP
+  - Allows connecting to elastic IP of your EC2
+  - Also, allows connecting to elastic IP of other customers ⚠️⚠️
+- AWS allows connection to AWS public zones in _**other regions**_ ✅
+
 
 Encryption options
 -
 
 **IP Sec VPN**
 - Provides end to end encryption
-- Reduces performance
+- Reduces performance due to encryption overhead
+- Works over DX connection using a **public VIF** to connect with TGW or VGW in AWS Public zone ‼️
+  - Very quick to provision due to wider support
+  - VIF + VPN provides low and consistent latency
+  - Also allows DX to connect to public zone of other regions 🌍
 
 **MacSec**
 - Provides encryption for each hop at layer 2
 - Physical connection is requried between the two devices
 - High performance
+- Difficult to find network devices supporting MacSec

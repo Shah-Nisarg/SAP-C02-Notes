@@ -225,5 +225,32 @@ Direct Connect
 - Physical connection from on-prem to AWS
 - 1, 10, 100 Gbps
 - Allocation may take up to a month
-- Unencrypted connection
+- Unencrypted connection ☠️
 - May connect to VPC or AWS public zone using private or public VIF
+- Only Fiber, no copper
+- Connects to physical port
+- Auto negotiation is disabled, Port speed and full duplex needs to be manually configured
+- Uses BGP and BGP MD5
+- AWS doesn't own the DX location where AWS port is connected to customer's port
+- DX is a layer 2 connection, multiple layer 3 connections can happen on DX using VIF, VLAN and BGP
+
+
+VIF
+-
+
+- 50 public + private VIF on dedicated DX
+- 1 VIF on hosted DX
+- BGP happens between customer DX router and AWS DX router
+
+
+Encryption options
+-
+
+**IP Sec VPN**
+- Provides end to end encryption
+- Reduces performance
+
+**MacSec**
+- Provides encryption for each hop at layer 2
+- Physical connection is requried between the two devices
+- High performance

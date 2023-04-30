@@ -192,6 +192,11 @@ Routing ⭐:
     - VPCs cannot interact with each other, but they can interact with the DX and VPN
     - DX and VPN can interact with either of the two VPC
 
+**Limits**:
+- 50 peering connections
+- 5000 attachments
+- 20 DXGW
+
 
 Route table
 =
@@ -278,6 +283,15 @@ DX Gateway
 - DGW can exchange routes with on-prem
   - but it cannot route traffic between VPCs as the DGW are not exchanging routes amongst themselves
 - Multiple accounts can request access to the private VIF and DX gateway
+
+Transit VIF
+-
+
+- Allows DX to connect to up to **3 TGW** using **DX gateway**
+- DX gateway supports either Transit VIF or Private VIF - but not both ⚠️⚠️⚠️⚠️⚠️
+- If 2 TGW connnect with a DGW, the DGW does not allow TGW to communicate
+  - but a peering connection can be established between TGW to allow communication ✅
+- [Important lesson](https://learn.cantrill.io/courses/895720/lectures/35069986) about TGW across regions allowing routing between on-prem locations
 
 Encryption options
 -

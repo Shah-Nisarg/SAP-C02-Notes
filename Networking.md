@@ -328,3 +328,83 @@ LAG (Link Aggregation Groups)
 - All links must have the same speed
 - All connections must go to the same DX location and the same AWS DX router ‼️
 - Has several single point of failure ⚠️
+
+Route 53
+=
+
+- Record types
+  - A - IPv4
+  - AAAA - IPv6
+  - CNAME
+    - www.example.com --> blabla.elb.amazonaws.com
+    - ⚠️ Cannot be used for zone apex `example.com`
+    - ⚠️⚠️ Different from alias record which point to a resource within AWS
+      - ✅ Alias records DO support zone apex
+      - Route 53 has no cost for alias records 💲💲
+      - Strongly recommended by AWS to use Alias records whenever possible
+  - MX - Mail
+  - TXT - Simple text to prove ownership of the domain
+- Public hosted zone = Root domain (.) --> Top level domain (.com) --> 4 Name servers (example.com)
+  - The process is called walking the tree.
+- Private hosted zone = Same as public hosted zone, but only accessible in the associated VPCs
+  - Also accessible via different accounts using CLI or API
+  - Split view - different records for public and private hosted zones of a domain
+  - Useful for AWS workspaces which run inside the VPC associated with private hosted zone
+
+Health checks
+-
+
+- Global fleet of health checker bots
+  - ⚠️ Don't block bots
+  - Allow public access
+- Runs every 10-30 seconds
+- Protocols: TCP, HTTP/s
+- Response: Status code (200 OK) or String matching
+- Types:
+  - Endpoint (IP or Domain)
+  - Checks of checks
+  - CloudWatch Alarm
+- Alarm can notify when healthcheck fails
+- **18%** health checkers must report the resource as healthy
+
+Routing policies
+-
+
+- Simple
+  - 1 or more values for the record
+  - Values are returned in random order for the client to pick
+  - ⚠️ No health checks
+- Failover 
+  - based on health check
+  - 1 primary, 1 failover record
+  - Primary has active servers, whereas secondary may have passive, e.g. S3, Warm standby or pilot light
+- Multi-value
+  - Multiple records with health checks
+  - Up to 8 healthy records are returned to client
+  - Improves availability
+  - All records have active servers
+- Weighted routing
+  - Multiple records with weight
+  - For testing new versions of application
+  - Weight 0 is not returned, unless all records have 0 weight
+  - Total doesn't have to be 100
+  - Unhealthy records are not returned
+- Latency
+  - Optimize performance 🚀 and user experience
+  - Records have region configuration (where the infrastructure is located)
+  - Also considers health checks
+- Geolocation
+  - Country, Continent, Default, OR **State (⚠️ only in USA)**
+  - Returns the most specific record
+    - If continent, country and state records are available for user's location, it returns state record
+  - 🚀⚠️ The response will not necessarily be the closest region
+    - You may configure a server in Europe for requests coming from US region
+  - Example:
+    - Restrict content to a country
+    - Language specific content
+    - Load balancing across regional endpoints
+- Geoproximity
+  - Closest to the customer based on distance
+  - Provide AWS resource ID, or latitude-longitude of the resource
+  - Configure **Bias** for each location to expand or shrink the range
+  - 

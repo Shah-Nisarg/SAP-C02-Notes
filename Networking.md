@@ -263,6 +263,21 @@ Public VIF
   - Also, allows connecting to elastic IP of other customers ⚠️⚠️
 - AWS allows connection to AWS public zones in _**other regions**_ ✅
 
+DX Gateway
+-
+
+- Global gateway object
+- ⚠️ Limitation of Private VIF with VGW (Virtual private gateway)
+  - It only connects to one VPC and within the **same region**
+- ✅ DX + DGW (DX Gateway)
+  - Allows connections to up to 10 VGW (each connecting to 1 VPC)
+  - ...from **different regions**
+  - 1 DX = 50 private VIF = 50 DGW = 50 * 10 (VPC per DGW) = 500 VPC
+  - ⚠️ Only allows traffic between on-prem and VPC
+    - VPC cannot communicate with each other
+- DGW can exchange routes with on-prem
+  - but it cannot route traffic between VPCs as the DGW are not exchanging routes amongst themselves
+- Multiple accounts can request access to the private VIF and DX gateway
 
 Encryption options
 -

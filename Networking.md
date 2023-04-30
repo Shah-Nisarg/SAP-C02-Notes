@@ -411,3 +411,14 @@ Routing policies
   
 Route 53 = Domain registration (Buying domain @ 12 $) + Domain hosting (4 NS records)
 
+DNS Sec
+-
+
+- Asymmetric key pair (KSK) is created in KMS in US-east-1
+- ZSK (Zone Signing Key) is created and handled by R53
+- KSK/ZSK associated with record
+- KSK used to create RRSIG record
+- Public KSK available to TLD (.com)
+- CW Alarm for DNSSec failure
+- DNS Sec validation can be enabled in VPC
+  - Records failing DNS Sec will not be returned

@@ -69,3 +69,26 @@ Kendra
 - Descriptive questions - how
 - Index - for organizing data
 - Data source - s3, confluence, RDS, Web crawler, etc.
+
+Polly
+=
+
+- Text to speech
+- Standard or Neural
+- Uses SSML
+
+Reckognition
+=
+
+- Image and Video analysis
+- Objects, people, text, face, activities
+- 💲 per minute or per image pricing
+
+Textract
+= 
+
+- Machine learning product
+- OCR
+- Output - text, structure, analysis
+- Usually real time
+- 💲per usage, with custom pricing for large volume of usage

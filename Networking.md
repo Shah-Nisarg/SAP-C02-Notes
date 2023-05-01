@@ -501,3 +501,25 @@ Problems:
  - Inbound - On-prem to R53 resolver
  - Rules to control what is forwarded
  - Can scale automatically based on load
+
+IPv6
+=
+
+- EC2 cannot have IPv4 addressing configured on them
+  - IGW handles the public IP address of ENIs linked with EC2
+- IPv6 
+  - no concept of public and private address
+  - No concept of NAT
+- Configuration:
+  - Enable IPv6 on VPC
+  - AWS allocates /56 to VPC and /64 to subnets
+- All IPv6 addresses are publicly routable
+- Routing is separate for IPv4 and IPv6
+  - separate routes in route table
+  - 10.16.0.0/16 - Local
+  - 2600:1f16:6e1:2200::/56 - Local
+  - 0.0.0.0/0 - IGW
+  - ::/0 - EO-IGW (Egress only) or IGW
+- Egress only internet gateway prevents inbound traffic
+- IPv6 must be enabled on each service
+

@@ -92,3 +92,38 @@ Textract
 - Output - text, structure, analysis
 - Usually real time
 - 💲per usage, with custom pricing for large volume of usage
+
+Transcribe
+=
+
+- Speech to text
+- Full text indexing of audio
+- Meeting notes
+
+Translate
+=
+
+- Text translation using ML
+- Auto-detect language
+
+Amazon Forecast
+=
+
+- Forecast time series data
+- Retail demand, server capacity, web traffic, etc.
+
+Amazon Fraud Detector
+=
+
+- Identify fraud in historical data
+- new accounts, payments, guest checkout
+- Transaction fraud (credit card)
+- Phishing or social media attack
+
+Sage Maker
+=
+
+- Fully managed machine learning service
+- Fetch, clean, prepare, train, evaluate, deploy, monitor
+- Studio for development of models
+- 💲 Only costs for the resources it creates (containers, storage)

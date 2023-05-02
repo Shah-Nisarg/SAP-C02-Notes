@@ -317,7 +317,7 @@ SQS
 |                | Category                                | Quota                                                      |                                                                    |
 |----------------|-----------------------------------------|------------------------------------------------------------|--------------------------------------------------------------------|
 | Delay Queue    | **delay**                               | 0-15 minutes                                               | ⚠️                                                                   |
-| Long Polling   | **duration**                            | 20 seconds                                                 |                                                                    |
+| Long Polling   | **duration**                            | 20 seconds                                                 |    ⚠️                                                                |
 | Message groups |                                         | No limit                                                   | for FIFO queue                                                     |
 | Messages       | count                                   | No limit                                                   |                                                                    |
 |                | in flight (being polled, yet to delete) | 120,000 standard queue 20,000 FIFI queue                   |                                                                    |

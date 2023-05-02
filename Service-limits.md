@@ -84,6 +84,26 @@ Database
 
 DynamoDB
 -
+|                             | Category                | Quota                                |                             |
+|-----------------------------|-------------------------|--------------------------------------|-----------------------------|
+| Per table                   | On demand               | **40k RCU, 40k WCU**                 | May be less in some regions |
+|                             | Provisioned             | **40k RCU, 40k WCU**                 |                             |
+| Per account                 |                         | **80k RCU, 80k WCU**                 |                             |
+| Table size                  |                         | No limit                             |                             |
+| Table count                 | Per account, Per region | 2500 default 10,000 hard limit       |                             |
+| Local Secondary Indexes     | Per table               | Max. 5                               |                             |
+| Global Secondary Indexes    | Per table               | Max. 20                              |                             |
+| Projected attributes        | Per secondary index     | Max. 100                             |                             |
+| Partition Key               | Length                  | 1-2048 bytes                         |                             |
+| Sort Key                    | Length                  | 1-1024 bytes                         |                             |
+| Partition Size              |                         | 10 GB                                |                             |
+| **Item Size**               | Names + Values          | **_400 KB_**                         | ⚠️                         |
+| Item Size + LSI values size |                         | **_400 KB_**                         |                             |
+| Transactions                | unique items            | 100                                  | Only 1 account and 1 region |
+|                             | data volume             | 4 MB                                 |                             |
+| Streams                     | Consumers               | 2 if single region 1 if global table |                             |
+
+
 
 RDS
 -

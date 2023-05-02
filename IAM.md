@@ -121,3 +121,10 @@ Organizations
     - root users of member accounts
   - ⚠️ Deny everything by default
   - Applies to OU or account
+- Tag Policies
+  - Consistent tag keys and vlaues
+- AI service opt-out policy
+  - Prevent AWS from using your data for improving their services
+- Backup policies
+  - View only backup plan that applies to the account
+  - 

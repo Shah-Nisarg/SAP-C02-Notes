@@ -314,6 +314,23 @@ Others
 
 SQS
 -
+|                | Category                                | Quota                                                      |                                                                    |
+|----------------|-----------------------------------------|------------------------------------------------------------|--------------------------------------------------------------------|
+| Delay Queue    | **delay**                               | 0-15 minutes                                               |                                                                    |
+| Long Polling   | **duration**                            | 20 seconds                                                 |                                                                    |
+| Message groups |                                         | No limit                                                   | for FIFO queue                                                     |
+| Messages       | count                                   | No limit                                                   |                                                                    |
+|                | in flight (being polled, yet to delete) | 120,000 standard queue 20,000 FIFI queue                   |                                                                    |
+|                | metadata attributes                     | 10                                                         |                                                                    |
+|                | batch                                   | **10 messages**                                            |                                                                    |
+|                | retention                               | 4 by default 14 maximum                                    |                                                                    |
+|                | **size**                                | **256 KB**                                                 | Can be extended using Client library for Java using S3 for storage |
+|                | **Visibility timeout**                  | 30 seconds default 12 hours max.                           |                                                                    |
+| Throughput     | standard queue                          | no limit                                                   |                                                                    |
+|                | FIFO queue                              | 300 transactions per second 3000 per second, with batching | Quota can be increased                                             |
+|                |                                         | 60,000 per second                                          | max. by support                                                    |
+| Policy         |                                         | 8192 bytes 20 statements 50 principals 10 conditions       |                                                                    |
+
 
 SNS
 -

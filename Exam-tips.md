@@ -19,4 +19,5 @@ Anti-patterns
   - when automated solutions are available
 - Throwing arbitrary numbers 
   - e.g. use 2000 IOPS when question doesn't provide any numbers to calculate using
-- Solutions that require significant changes to application code, architecture or time to implement
+- Significant changes to application code, architecture or time to implement
+- Not using standard AWS services

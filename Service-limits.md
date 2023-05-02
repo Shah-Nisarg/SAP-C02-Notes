@@ -24,7 +24,7 @@ Lambda
 | Concurrent executions            |             | 1000 default ~10-100k max.                           | Can be increased by support                                         |
 | Storage for functions and layers |             | 75 GB default ~TBs max.                              | Can be increased by support                                         |
 | ENI per VPC                      |             | 250 default ~thousands max.                          |                                                                     |
-| Memory allocation                |             | **128 MB - 10,240 MB  1 MB increments**              | ⚠️ 1769 MB per vCPU up to 6 vCPU                                       |
+| Memory allocation                |             | **128 MB - 10,240 MB //  1 MB increments**              | ⚠️ 1769 MB per vCPU up to 6 vCPU                                       |
 | Timeout                          |             | **15 minutes**                                       | ⚠️                                                                    |
 | Environment variables            |             | **4 KB** total                                       | ⚠️                                                                    |
 | Resource based policy            |             | 20 KB                                                |                                                                     |
@@ -32,9 +32,9 @@ Lambda
 | Burst concurrency                |             | 500-3000 depending upon the region                   | [Read](https://docs.aws.amazon.com/lambda/latest/dg/burst-concurrency.html) |
 | Invocation payload               | synchronous | **6 MB**                                             |                                                                     |
 |                                  | async       | **256 KB**                                           |                                                                     |
-| .zip size                        |             | **50 MB zipped 250 MB unzipped 3 MB console editor** | ⚠️⚠️                                                                    |
+| .zip size                        |             | **50 MB zipped // 250 MB unzipped // 3 MB console editor** | ⚠️⚠️                                                                    |
 | Container image code package     |             | **10 GB**                                            |                                                                     |
-| /tmp directory                   |             | **512 MB- 10240 MB  1 MB increments**                | ⚠️                                                                    |
+| /tmp directory                   |             | **512 MB- 10240 MB // 1 MB increments**                | ⚠️                                                                    |
 
 ECS
 -
@@ -337,16 +337,16 @@ SQS
 | Long Polling   | **duration**                            | 20 seconds                                                 |    ⚠️                                                                |
 | Message groups |                                         | No limit                                                   | for FIFO queue                                                     |
 | Messages       | count                                   | No limit                                                   |                                                                    |
-|                | in flight (being polled, yet to delete) | 120,000 standard queue 20,000 FIFI queue                   |                                                                    |
+|                | in flight (being polled, yet to delete) | 120,000 standard queue // 20,000 FIFO queue                   |                                                                    |
 |                | metadata attributes                     | 10                                                         |                                                                    |
 |                | batch                                   | **10 messages**                                            |                                                                    |
-|                | retention                               | 4 by default 14 maximum                                    |                                                                    |
+|                | retention                               | 4 days by default // 14 maximum                                    |                                                                    |
 |                | **size**                                | **256 KB**                                                 | ⚠️ Can be extended using Client library for Java using S3 for storage |
 |                | **Visibility timeout**                  | 30 seconds default 12 hours max.                           |                                                                    |
 | Throughput     | standard queue                          | no limit                                                   |                                                                    |
-|                | FIFO queue                              | 300 transactions per second 3000 per second, with batching | Quota can be increased                                             |
+|                | FIFO queue                              | 300 transactions per second // 3000 per second, with batching | Quota can be increased                                             |
 |                |                                         | 60,000 per second                                          | max. by support                                                    |
-| Policy         |                                         | 8192 bytes 20 statements 50 principals 10 conditions       |                                                                    |
+| Policy         |                                         | 8192 bytes // 20 statements // 50 principals // 10 conditions       |                                                                    |
 
 
 SNS

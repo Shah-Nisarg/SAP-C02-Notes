@@ -64,9 +64,10 @@ KMS
     - 🤯 Must use **Cloud HSM client software**, no AWS APIs
       - 🔒 Separate access control
       - ⛔ No IAM
-    - ‼️ If you lose CloudHSM device, the key is lost
-    - ‼️ HA
+    - If you lose CloudHSM device, the key is lost
+    - HA
       - CloudHSM cluster = multi-AZ
+    - ‼️ It can do SSL offloading (i.e. decrypting HTTPS traffic) on EC2 instances having NGINX or IIS
 - Multi-region Keys
   - Same key in multiple regions
   - Same key ID in multiple regions

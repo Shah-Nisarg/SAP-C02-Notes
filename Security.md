@@ -55,11 +55,18 @@ KMS
       - ⛔ Cannot bring asymmetric key
     - Must be rotated manually
     - ⛔ Cannot be used with Cloud HSM
-  - Cloud HSM
+  - **Cloud HSM**
     - Your hardware containing the key
     - Key doesn't leave cloud HSM
     - Very secure
     - ✅ FIPS level 3
+    - Support symmetric and asymmetric encryption
+    - 🤯 Must use **Cloud HSM client software**, no AWS APIs
+      - 🔒 Separate access control
+      - ⛔ No IAM
+    - ‼️ If you lose CloudHSM device, the key is lost
+    - ‼️ HA
+      - CloudHSM cluster = multi-AZ
 - Multi-region Keys
   - Same key in multiple regions
   - Same key ID in multiple regions
@@ -98,3 +105,19 @@ RDS
 - Autorization always happens in RDS
 - EBS volumes/snapshots can be encrypted using KMS
 
+ACM
+=
+
+- Free
+- Automatically renews every year
+- Integrates with CloudFront, ELB (ALB and NLB), API gateway
+- SNI (Server name indication) 
+  - loading multiple certificates on a single server or ELB
+  - certificate is returned based on the host name
+- DNSSEC - ensure that the DNS routes are secure and validated using hash
+- Provides SSL termination at ALB ✅
+- Supports private certificates
+- ⚠️ Manually uploaded certificates must be renewed manually
+- ⚠️⚠️ Certificates can only be associated to resources within that region
+- ⚠️⚠️⚠️ CloudFront certificates are required in _us-east-1_
+- 

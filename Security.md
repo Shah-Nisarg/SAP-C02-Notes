@@ -23,3 +23,46 @@ CloudTrail
   - EventBridge (fastest)
   - CloudWatch Logs (through streaming, metric filter)
   - S3 (Athena etc.)
+
+KMS
+=
+
+- Encryption
+- Symmetric
+  - 4 KB data encryption
+- Asymmetric
+  - ex. sign/verify, encryption outside KMS
+- ✅ CMK
+  - you manage rotation, deletion, key policy
+  - available for envelope encryption
+- ⚠️ AWS Managed Key
+  - automatically rotated every 1 year
+  - view key policy
+  - audit in cloud trail
+  - No management by you
+- 🔒 AWS Owned Key
+  - used by AWS for multiple accounts
+  - No audit
+  - No management by you
+  - Unknown rotation policy
+- Key Material
+  - KMS
+    - Creates and manages the key material
+    - ⚠️ FIPS Level 2
+  - External ⚠️⚠️⚠️⚠️⚠️
+    - You can import key material and secure it
+    - Must be symmetric key
+      - ⛔ Cannot bring asymmetric key
+    - Must be rotated manually
+    - ⛔ Cannot be used with Cloud HSM
+  - Cloud HSM
+    - Your hardware containing the key
+    - Key doesn't leave cloud HSM
+    - Very secure
+    - ✅ FIPS level 3
+- Multi-region Keys
+  - Same key in multiple regions
+  - Same key ID in multiple regions
+  - One replica can become a primary key
+  - Disaster recovery
+  - Distributed signing

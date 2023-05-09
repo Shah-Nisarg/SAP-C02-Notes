@@ -86,3 +86,15 @@ Secrets Manager
 - Integration with RDS, redshipt, document DB
 - Resource based policy
 - Encryption using KMS
+
+RDS
+=
+
+- Security at rest
+  - TDE (transparent data encryption) for Oracle and SQL Server
+- Security in transit
+  - SSL is supported for all DBs
+- IAM authentication is supported by PostGreSQL, MySQL and MariaDB
+- Autorization always happens in RDS
+- EBS volumes/snapshots can be encrypted using KMS
+

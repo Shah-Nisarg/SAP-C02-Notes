@@ -121,4 +121,58 @@ ACM
 - ⚠️ Manually uploaded certificates must be renewed manually
 - ⚠️⚠️ Certificates can only be associated to resources within that region
 - ⚠️⚠️⚠️ CloudFront certificates are required in _us-east-1_
-- 
+
+S3
+=
+
+Encryption methods:
+1. SSE-S3
+2. SSE-KMS
+  -  Keys from KMS
+  -  Audit using cloud trail
+  -  Requires **GenerateDataKey** permission
+4. SSE-C
+  - Must use **HTTPS**
+6. Client side encryption
+7. Glacier - always encrypted using AES-256
+
+Enforcing HTTPS:
+- Bucket policy with SecureTransport
+
+Other features:
+-
+
+- Access Logs
+- Event notifications
+  - May skip notifications if versioning is not enabled
+- Event Bridge
+- IAM policy
+- Bucket policy (resource based)
+- ACL (Bucket and Object)
+- Pre-signed URL 
+  - (download or upload) 🤯
+  - The URL inherits the permission of IAM identity that created URL
+  - if the identity loses permissions, the URL also loses permissions
+  - if the identity expires (such as temporary credentials of a role), the URL becomes unauthorized
+- VPC Endpoint (Gateway (free) and Interface)
+  - Policy for VPC endpoint (`AWS:SourceIp`, `AWS:SourceVPCe`, `AWS:SourceVPC`)
+- Object Lock
+  - WORM
+  - Governance mode or compliance mode
+- Glacier vault lock
+  - Need to confirm lock in 24 hours
+  - Lock cannot be removed once applied
+  - Apply a custom policy
+- Access Points
+  - Separate access point policies for different groups of users
+  - Different URLs (`s3://finance-ap.s3.amazonaws.com`)
+  - Can be exposed to internet or VPC
+    - Requires a VPC endpoint for VPC access point
+    - Requires a separate VPC endpoint access policy
+- Multi-region access points
+  - 1 access point, multiple buckets
+  - Bi-directional Cross-region replication
+  - Failover control (Active-active, Active-passive)
+  - Routes traffic to nearest bucket
+  - Replication time control (15 mins and metrics) ‼️
+  - Must enable versioning

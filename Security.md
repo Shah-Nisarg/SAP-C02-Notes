@@ -66,3 +66,23 @@ KMS
   - One replica can become a primary key
   - Disaster recovery
   - Distributed signing
+
+Parameter Store
+=
+
+- 4 KB to 8 KB
+- Version tracking
+- Integration with cloud formation
+- Encryption support with KMS
+- Hierarchical data store
+- 🤯🤯🤯 Allow access to secrets manager: `/aws/reference/secretsmanager/secret_ID_in_secrets_manager`
+- ✅ Allow access to public AMIs: `/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2` for every region
+- ⚠️ Parameter policies can be used to apply TTL (to expire old passwords)
+
+Secrets Manager
+= 
+
+- Rotation of secrets
+- Integration with RDS, redshipt, document DB
+- Resource based policy
+- Encryption using KMS

@@ -127,4 +127,43 @@ Organizations
   - Prevent AWS from using your data for improving their services
 - Backup policies
   - View only backup plan that applies to the account
-  - 
+
+
+IAM Identity Center
+=
+
+- Organization
+- Single sign-on across accounts
+- Permission sets (role) linked to OUs
+- Permission sets assigned to user groups
+  - On login, users assume the role
+- SAML 2.0
+- SSO to business apps
+- Also supports Attribute-based Access Control (ABAC)
+
+AWS Control Tower
+=
+
+- Govern and secure AWS organization
+- Policy management and guardrails
+  - Preventive = SCP
+  - Detective = AWS Config
+- Detect policy violations and mitigate them
+- Monitor compliance through interactive dashboard
+- **Account Factory**
+  - Create pre-approved configurations for new AWS accounts
+  - e.g. VPC, regions, subnets, AD/ADFS
+
+RAM (Resource Access Manager)
+= 
+
+- Share resources within organization or to any other account
+- e.g. Subnets, Transit gateway, Route 53 resolver rules, Aurora DB clusters
+  - if a subnet is shared, security groups across accounts can be used in rules ✅
+- Cannot share default VPC
+- Participants cannot modify or delete shared resources  
+- ‼️ [Managed prefix list](https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html) can also be shared
+  - prefix list = a collection of CIDR blocks 
+  - for example, CIDR range of internal corporate network
+  - the prefix list can be used in security groups or route tables
+  - AWS Managed Prefix list contains AWS service CIDRs, e.g. dynamo DB

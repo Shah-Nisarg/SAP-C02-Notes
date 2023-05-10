@@ -176,3 +176,69 @@ Other features:
   - Routes traffic to nearest bucket
   - Replication time control (15 mins and metrics) ‼️
   - Must enable versioning
+- Object Lambda
+  - Change lambda function to replace the object before returning it
+  - e.g. redact data, enrich data with a different DB
+  - has a separate access point
+
+Shield
+=
+
+- Shield standard - DDoS protection basic - default, free
+- Advanced - cost per organization
+  - insurance against increased cost
+  - 24 * 7 support
+  - metrics
+- CloudFront, Route 53, ALB
+
+WAF
+=
+
+- ALB, CloudFront, API Gateway, AppSync (GraphQL)
+- Layer 7 protection
+- OWASP
+- ⚠️ Block IP, country, block by size, block by rate, block bots
+- ✅ Action - Count, allow, block, captcha
+- Example: CloudFront in front of ALB can inject a custom header that WAF (on ALB) will use to filter request using Web ACL. This prevents unauthorized traffic from hitting the ALB.
+- **Firewall manager** can be used to apply consistent WAF rules across accounts ‼️✅
+
+Firewall manager
+= 
+
+- Rules in all accounts in organization
+  - WAF
+  - Shield advanced
+  - Security groups
+  - Network Firewall at VPC
+  - Route 53 resolver DNS firewall
+- Rules are region specific
+- Rules are automatically applied to new resources ‼️
+
+Inspector
+=
+
+- Security assessment on **running** EC2, containers (ECR) and Lambda functions
+- uses SSM agent
+- network and OS
+- Send findings to ✅ Security hub and event bridge
+
+Config
+=
+
+- Rules to check AWS resource compliance
+- History
+- ⛔ Cannot prevent API actions
+- ✅ Allows remediation using **SSM automation** or lambda
+- Periodic or in response to API
+- per region service
+- Can aggregate into one account
+
+How to block an IP
+=
+
+- NACL on subnet that has
+  - EC2
+  - Or, ALB
+  - Or, EC2 if it has NLB in front
+- WAF on ALB with IP filtering
+- WAF on CloudFront

@@ -246,6 +246,31 @@ Config
 - per region service
 - Can aggregate into one account 🏛️
 
+Security Hub
+=
+
+- Aggregate alerts across accounts 🏛️ and services
+  - Macie
+  - GuardDuty
+  - Inspector
+  - Firewall Manager
+  - IAM Access analyzer (Permissions granted to external entity)
+  - Systems Manager
+- Generate events in event bridge and findings
+- Automated checks
+- Must enable config ⚠️
+- Send data to Detective
+
+Detective 🤯
+=
+
+- Find root cause of security issues
+- uses ML and graphs
+- Uses
+  - VPC flow logs
+  - CloudTrail
+  - GuardDuty
+
 Logs
 =
 
@@ -256,6 +281,12 @@ Logs
 - Route 53 access logs - CW
 - CF access logs - S3
 - Config - S3
+
+EC2 Instance Connect
+=
+
+- Sends a temporary public key to EC2
+- SendSSHPublicKey
 
 How to block an IP
 =

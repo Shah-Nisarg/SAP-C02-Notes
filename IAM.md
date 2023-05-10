@@ -12,7 +12,7 @@ Fundamentals
   - Action
   - Resource
   - Condition
-    - SourceIp
+    - SourceIp - only works for public IP ⚠️
     - RequestedRegion
     - ec2:ResourceTag (i.e. tag)
     - aws:MultiFactorAuthPresent

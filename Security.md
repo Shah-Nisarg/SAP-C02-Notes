@@ -127,14 +127,14 @@ S3
 
 Encryption methods:
 1. SSE-S3
-2. SSE-KMS
-  -  Keys from KMS
-  -  Audit using cloud trail
-  -  Requires **GenerateDataKey** permission
-4. SSE-C
-  - Must use **HTTPS**
-6. Client side encryption
-7. Glacier - always encrypted using AES-256
+1. SSE-KMS
+   -  Keys from KMS
+   -  Audit using cloud trail
+   -  Requires **GenerateDataKey** permission
+1. SSE-C
+   - Must use **HTTPS**
+1. Client side encryption
+1. Glacier - always encrypted using AES-256
 
 Enforcing HTTPS:
 - Bucket policy with SecureTransport

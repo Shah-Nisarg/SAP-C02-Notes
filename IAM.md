@@ -12,6 +12,11 @@ Fundamentals
   - Action
   - Resource
   - Condition
+    - SourceIp
+    - RequestedRegion
+    - ec2:ResourceTag (i.e. tag)
+    - aws:MultiFactorAuthPresent
+    - 🤯 aws:PrincipalOrgID = For member accounts of organization
   - ```
     {
       "Effect": "Allow",

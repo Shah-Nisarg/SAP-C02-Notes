@@ -185,7 +185,7 @@ Shield
 =
 
 - Shield standard - DDoS protection basic - default, free
-- Advanced - cost per organization
+- Advanced - cost per organization 🏛️
   - insurance against increased cost
   - 24 * 7 support
   - metrics
@@ -200,12 +200,12 @@ WAF
 - ⚠️ Block IP, country, block by size, block by rate, block bots
 - ✅ Action - Count, allow, block, captcha
 - Example: CloudFront in front of ALB can inject a custom header that WAF (on ALB) will use to filter request using Web ACL. This prevents unauthorized traffic from hitting the ALB.
-- **Firewall manager** can be used to apply consistent WAF rules across accounts ‼️✅
+- 🏛️ **Firewall manager** can be used to apply consistent WAF rules across accounts ‼️✅
 
 Firewall manager
 = 
 
-- Rules in all accounts in organization
+- Rules in 🏛️ all accounts in organization
   - WAF
   - Shield advanced
   - Security groups
@@ -222,6 +222,19 @@ Inspector
 - network and OS
 - Send findings to ✅ Security hub and event bridge
 
+GuardDuty
+=
+
+- ML to analyze various events in AWS account
+- Data
+  - CloudTrail (management and data events)
+  - VPC flow logs
+  - DNS logs
+  - K8s audit logs
+- Notify event bridge
+- 🤯 Detects crypto currency mining 
+- 🏛️ For central management - make an account a delegated administrator in the organization 
+
 Config
 =
 
@@ -231,7 +244,18 @@ Config
 - ✅ Allows remediation using **SSM automation** or lambda
 - Periodic or in response to API
 - per region service
-- Can aggregate into one account
+- Can aggregate into one account 🏛️
+
+Logs
+=
+
+- ELB access logs - S3
+- S3 access logs - S3
+- CloudTrail - S3, CW
+- VPC Flow logs - S3, CW, KDF
+- Route 53 access logs - CW
+- CF access logs - S3
+- Config - S3
 
 How to block an IP
 =

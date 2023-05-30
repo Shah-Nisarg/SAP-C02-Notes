@@ -45,6 +45,18 @@ Metrics:
 - Disk
 - ⛔ NOT RAM
 
+Spot fleets
+=
+
+- On-demand + Spot
+- Set a max price
+- Mix of instance types (M, G, R, C, T)
+- Up to 100,000 instances
+- Strategies:
+  - LowestPrice
+  - Diversified (across different pools, OS, AZ, Instance types)
+  - capacityOptimized (max capacity)
+
 HPC 🚀🚀🚀🚀🚀
 -
 

@@ -76,3 +76,48 @@ HPC 🚀🚀🚀🚀🚀
   - AWS Parallel cluster
     - Configure clusters with text files
     - Automatic creation of VPC, subnet, cluster tyupe and instance types
+
+Auto scaling
+=
+
+- Target tracking scaling
+  - Keep average CPU at 40%
+- Simple/Step scaling
+  - When CPU > 70%, add 2 units
+- Scheduled actions
+  - Add 1 units at 12 PM, remove 1 at 8 PM
+- Predictive scaling
+
+Useful metrics
+-
+
+- CPU
+- RequestCountPerTarget ✅
+- Average network IO
+- Custom cloudwatch metrics
+
+Notes:
+-
+
+- Spot fleet is supported (mix of on-demand and spot instances)
+- Lifecycle hooks (cleanup, log extraction before termination) ✅
+- Upgrade an AMI - modify launch configuration or template
+  - Terminate instances manually
+  - Or, EC2 instance refresh
+    - Recreate all auto-scaling instances using the launch template
+    - Specify minimum healthy to avoid disruption
+    - warm-up time to allow instances to be ready
+- Processes (that can be suspended):
+  - Launch
+  - Terminate
+  - HealthCheck - ex. to stop healthchecks on instance while performing maintenance
+  - ReplaceUnhealthy
+  - AZRebalance
+  - AlarmNotification - ex. accept a notification from cloudwatch
+  - ScheduledActions
+  - AddToLoadBalancer - ex. to perform actions before instance is added to ALB target group
+  - InstanceRefresh
+- New instance is launched after terminating unhealthy instances
+- Health checks
+  - EC2 status checks
+  - ELB health checks

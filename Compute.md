@@ -133,3 +133,39 @@ Notes:
 - Health checks
   - EC2 status checks
   - ELB health checks
+
+Containers
+=
+
+- ECS
+  - Types
+    - EC2
+    - Fargate (Serverless) 🖥️
+  - Cluster of instances
+  - Service = a group of tasks to run
+  - Task definition - JSON about how to run a container, i.e. image, CPU, RAM
+  - Task - a running docker container
+  - IAM role
+    - EC2 instance profile
+      - Required to register instances with ECS and send logs
+    - Task IAM role
+      - Required for tasks such as accessing S3
+  - ✅ Dynamic port mapping with ALB
+  - Networking
+    - none - no network, no ports
+    - bridge - docker's container based network
+    - host - bypass docker, use host network interface
+    - ✅ awsvpc - ENI and private IP in VPC
+      - with security groups, VPC flow logs
+      - default for fargate
+  - Auto scaling
+    - CPU and RAM are tracked
+    - Scaling policies: Step, target tracking, scheduled
+    - EC2 instances must be auto scaled separately ⚠️
+  - Spot - minimum can be launched using on-demand and rest can be launched using FARGATE_SPOT for cost savings
+- EKS
+- ECR 
+  - Store images privately or publicly
+  - Fully integrated with ECS
+  - IAM access control, policy (e.g EC2 instance profile to pull images) ✅
+  - ⚠️ Image vulnerability scanning, versioning

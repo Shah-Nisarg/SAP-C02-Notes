@@ -163,9 +163,20 @@ Containers
     - Scaling policies: Step, target tracking, scheduled
     - EC2 instances must be auto scaled separately ⚠️
   - Spot - minimum can be launched using on-demand and rest can be launched using FARGATE_SPOT for cost savings
-- EKS
 - ECR 
   - Store images privately or publicly
   - Fully integrated with ECS
   - IAM access control, policy (e.g EC2 instance profile to pull images) ✅
   - ⚠️ Image vulnerability scanning, versioning
+    - Results are sent into event bridge
+    - **Amazon Inspector** can perform enhanced scanning
+  - Cross region and cross account replication
+- EKS
+  - Managed kubernetes
+  - Nodes: AWS Managed EC2, Self-Managed EC2, Fargate
+    - EC2 nodes can be on-demand or spot
+  - Volumes
+    - EBS
+    - EFS
+    - FSx for NetApp ONTAP
+    - FSx Lustre

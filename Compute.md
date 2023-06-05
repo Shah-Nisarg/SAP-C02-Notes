@@ -180,3 +180,44 @@ Containers
     - EFS
     - FSx for NetApp ONTAP
     - FSx Lustre
+
+App Runner
+=
+
+- Run container or source code in cloud
+- Access using URL
+- Python, Node.js, Java
+
+ECS Anywhere
+=
+
+- Run ECS containers **on premises**
+- Uses ECS agent and SSM agent
+- Containers run on on-prem infra
+- Shows up in AWS console
+
+EKS Anywhere
+=
+
+- Create kubernetes cluster on-premises
+- Install AWS EKS distro
+- fully connected to AWS or disconnected 
+- managed from AWS or managed using open source tools
+
+
+Lambda
+=
+
+- RAM - 128 MB to 10 GB
+- vCPU - up to 6, 1 per 1769 MB RAM
+- Time limit - 15 mins
+- /tmp - 10 GB
+- Deployment package - 50 MB zipped, 250 MB unzipped
+- Concurrent executions - 1000 (soft limit)
+- Container image size - 10 GB
+- Invocation payload - 6 MB sync, 256 KB async
+- Alias and Code Deploy - can be used to shift traffic to new alias gradually
+  - Linear
+  - Canary
+  - All At Once
+- 
